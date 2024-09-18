@@ -56,7 +56,7 @@ pipeline {                                // declarative pipeline
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: '54.167.120.230:8081/',  // private ip of nexus
+                    nexusUrl: '172.31.21.164:8081/',  // private ip of nexus
                     groupId: 'com.roboshop',
                     version: "$version",
                     repository: 'catalogue',
