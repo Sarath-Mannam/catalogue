@@ -51,25 +51,25 @@ pipeline {                                // declarative pipeline
             }
         }
         // Install pipeline utility steps plugin 
-        // stage('Publish Artifact') { 
-        //     steps {
-        //         nexusArtifactUploader(
-        //             nexusVersion: 'nexus3',
-        //             protocol: 'http',
-        //             nexusUrl: '172.31.28.162:8081/',  // private ip of nexus
-        //             groupId: 'com.roboshop',
-        //             version: '1.0.0',
-        //             repository: 'catalogue',
-        //             credentialsId: 'nexus-auth',
-        //             artifacts: [
-        //                 [artifactId: 'catalogue',
-        //                 classifier: '',
-        //                 file: 'catalogue.zip',
-        //                 type: 'zip']
-        //             ]
-        //         ) 
-        //     }
-        // }
+        stage('Publish Artifact') { 
+            steps {
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: '172.31.21.164:8081/',  // private ip of nexus
+                    groupId: 'com.roboshop',
+                    version: "$version",
+                    repository: 'catalogue',
+                    credentialsId: 'nexus-auth',
+                    artifacts: [
+                        [artifactId: 'catalogue',
+                        classifier: '',
+                        file: 'catalogue.zip',
+                        type: 'zip']
+                    ]
+                ) 
+            }
+        }
         stage('Deploy') { 
             steps {
                 echo "Deployment"
