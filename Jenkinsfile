@@ -1,5 +1,9 @@
 pipeline {                                // declarative pipeline 
     agent { node { label 'Agent-1' } }
+    environment{ 
+        // here if you create any variable it will have global access because it is env varialble
+        version = ''
+    }
     stages {
         stage('Get version') {
             steps{
@@ -8,7 +12,8 @@ pipeline {                                // declarative pipeline
                     def packageJson = readJSON file: 'package.json'
                     
                     // Extract the version
-                    def version = packageJson.version
+                    // def version = packageJson.version
+                       version = packageJson.version
                     
                     // Display the version
                     echo "Catalogue component version: ${version}"
@@ -41,7 +46,8 @@ pipeline {                                // declarative pipeline
         }
         stage('Static Application Security Testing') { 
             steps {
-                echo "SAST Completed" 
+                echo "SAST Completed"
+                echo "package version: $version"
             }
         }
         // Install pipeline utility steps plugin 
