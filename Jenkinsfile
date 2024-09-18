@@ -17,8 +17,7 @@ pipeline {                                // declarative pipeline
         }
         stage('Install dependencies') { 
             steps {
-                sh 'export PATH=$PATH:/usr/local/bin && npm install'
-                // sh 'npm install'
+                sh 'npm install'
             }
         }
         stage('Unit test') { 
