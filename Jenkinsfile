@@ -77,7 +77,7 @@ pipeline {                                // declarative pipeline
                 script {
                     echo "Deployment"
                     def params = [
-                        string (name: 'version'value:"$version")
+                        string (name:'version', value:"$version")
                     ]
                     build job: "../catalogue-deploy", wait: true, parameters:params
                 }
