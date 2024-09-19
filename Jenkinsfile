@@ -70,9 +70,12 @@ pipeline {                                // declarative pipeline
                 ) 
             }
         }
+        // Here I need to configure downstream job and I have to pass package version for deployment otherwise deploy job don't know which one to deploy 
+        // This job will wait untill downstream job is over.
         stage('Deploy') { 
             steps {
                 echo "Deployment"
+                 build job: "../catalogue-deploy", wait: true
             }
         }
     }
