@@ -79,7 +79,7 @@ pipeline {                                // declarative pipeline
                     def params = [
                         string (name:'version', value:"$version")
                     ]
-                    build job: "../catalogue-deploy", wait: true, parameters:params
+                    build job: "../catalogue-deploy", wait: true, parameters: params
                 }
             }
         }
